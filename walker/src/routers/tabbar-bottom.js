@@ -8,7 +8,7 @@ import MoreComponent from '../features/more/components/more.component';
 const setIconButtonTabbar = (iconScreenTabbar, nameIconVector, focused) => {
     iconScreenTabbar.icon = nameIconVector + `${focused ? '' : '-outline'}`;
 }
-
+//Test
 export default createBottomTabNavigator(
 
     {
