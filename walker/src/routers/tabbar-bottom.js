@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button, Text, View } from 'react-native';
 import { TabNavigator, createBottomTabNavigator } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import StepsComponent from '../features/steps/components/steps-screen.component';
