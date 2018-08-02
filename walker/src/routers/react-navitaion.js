@@ -3,7 +3,8 @@ import { View, Text } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import HomeComponent from '../features/home/components/home-screen.component';
 import TabbarBottom from './tabbar-bottom';
-import Colors from '../common/constants/colors';
+import Colors from '../common/utils/colors';
+
 export default createStackNavigator(
     {
         Tabbar: TabbarBottom,

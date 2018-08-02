@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
     View,
 } from 'react-native';
-import Colors from '../../common/constants/colors';
+import Colors from '../../common/utils/colors';
 
 export const ViewLine = ({ paramMarginLeft }) => {
     return (

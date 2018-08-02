@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Text, View } from 'react-native';
 import { TabNavigator, createBottomTabNavigator } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import ToolsComponent from '../features/tools/components/tools-screen.component';
+import StepsComponent from '../features/steps/components/steps-screen.component';
 import MoreComponent from '../features/more/components/more.component';
 
 const setIconButtonTabbar = (iconScreenTabbar, nameIconVector, focused) => {
@@ -12,8 +12,8 @@ const setIconButtonTabbar = (iconScreenTabbar, nameIconVector, focused) => {
 export default createBottomTabNavigator(
 
     {
-        Tools: {
-            screen: ToolsComponent
+        Steps: {
+            screen: StepsComponent
         },
         More: {
             screen: MoreComponent
@@ -25,11 +25,13 @@ export default createBottomTabNavigator(
                 const { routeName } = navigation.state;
                 var iconScreenTabbar = { "icon": null };
                 switch (routeName) {
-                    case 'Tools':
-                        setIconButtonTabbar(iconScreenTabbar, 'ios-construct');
+                    case 'Steps':
+                        // setIconButtonTabbar(iconScreenTabbar, 'ios-stats');
+                        iconScreenTabbar.icon = 'ios-stats' + `${focused ? '' : '-outline'}`;
                         break;
                     case 'More':
-                        setIconButtonTabbar(iconScreenTabbar, 'ios-more');
+                        // setIconButtonTabbar(iconScreenTabbar, 'ios-more');
+                        iconScreenTabbar.icon = 'ios-more' + `${focused ? '' : '-outline'}`;
                         break;
                     default:
                         break;

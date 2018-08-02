@@ -5,7 +5,7 @@ import {
   Platform,
   StatusBar
 } from 'react-native';
-import Colors from '../../common/constants/colors';
+import Colors from '../../common/utils/colors';
 
 export default class componentName extends Component {
   constructor(props) {
@@ -72,5 +72,6 @@ const styles = {
   text_title: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: "white"
   }
 }

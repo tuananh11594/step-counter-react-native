@@ -5,7 +5,7 @@ import {
     TouchableOpacity,
     Image
 } from 'react-native';
-import Colors from '../../common/constants/colors';
+import Colors from '../../common/utils/colors';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { ViewLine } from './view-line.component'
 

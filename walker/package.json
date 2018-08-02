@@ -7,8 +7,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "immutability-helper": "^2.7.1",
+    "lodash": "^4.17.10",
     "react": "16.4.1",
     "react-native": "0.56.0",
+    "react-native-charts-wrapper": "^0.4.3",
     "react-native-circular-progress": "^1.0.1",
     "react-native-linear-gradient": "^2.4.0",
     "react-native-svg": "^6.5.1",
