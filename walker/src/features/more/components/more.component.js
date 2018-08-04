@@ -16,5 +16,6 @@ export default class MoreComponent extends Component {
 const styles = {
     container: {
         flex: 1,
+        backgroundColor: '#262B30',
     }
 }

@@ -3,13 +3,14 @@ import { TabNavigator, createBottomTabNavigator } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import StepsComponent from '../features/steps/components/steps-screen.component';
 import MoreComponent from '../features/more/components/more.component';
+import TargetComponent from '../features/steps/components/target/target.component';
 
 const setIconButtonTabbar = (iconScreenTabbar, nameIconVector, focused) => {
     iconScreenTabbar.icon = nameIconVector + `${focused ? '' : '-outline'}`;
 }
+
 //Test
 export default createBottomTabNavigator(
-
     {
         Steps: {
             screen: StepsComponent
@@ -40,8 +41,10 @@ export default createBottomTabNavigator(
         }),
         tabBarPosition: 'bottom',
         animationEnabled: true,
-        tabbarOption: {
-            activeTintColor: 'red'
+        tabBarOptions: {
+            style: {
+                backgroundColor: '#262B30',
+            },
         }
     }
 )
