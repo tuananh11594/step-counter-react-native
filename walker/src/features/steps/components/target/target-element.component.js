@@ -10,7 +10,7 @@ import Colors from '../../../../common/utils/colors'
 import { ViewLine } from '../../../../common/component/view-line.component'
 import Entypo from 'react-native-vector-icons/Entypo';
 
-export const CellPhone = ({ param }) => {
+export const TargetElement = ({ param }) => {
     return (
         <View style={styleCellPhone.view_cell_phone}>
             <Text style={styleCellPhone.text_phone}>{param.number}</Text>

@@ -37,19 +37,22 @@ export default class AboutComponent extends Component {
         <View style={styles.view_show_result}>
           <TouchableOpacity
             style={styles.button_sumary}
-            onPress={() => { this.props.navigation.navigate('Target') }} >
+            // onPress={() => { this.props.navigation.navigate('Target') }} 
+            >
             {renderSummary('ios-flame')}
             <Text style={styles.text_sumary}>57 KCAL</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button_sumary}
-            onPress={() => { this.props.navigation.navigate('Target') }}>
+            // onPress={() => { this.props.navigation.navigate('Target') }}
+            >
             {renderSummary('ios-speedometer')}
             <Text style={styles.text_sumary}>854M</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button_sumary}
-            onPress={() => { this.props.navigation.navigate('Target') }}>
+            // onPress={() => { this.props.navigation.navigate('Target') }}
+            >
             {renderSummary('ios-timer')}
             <Text style={styles.text_sumary}>18 PHÚT</Text>
           </TouchableOpacity>
