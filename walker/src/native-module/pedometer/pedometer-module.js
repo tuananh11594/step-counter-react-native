@@ -7,7 +7,7 @@ module.exports = {
     Pedometer: {
         pedometerModule: new NativeEventEmitter(PedometerModule),
         startCountingSteps(callback) {
-            this.pedometerModule.addListener(
+            this.subscription = this.pedometerModule.addListener(
                 'Pedometer',
                 (steps) => {
                     callback(steps)
@@ -29,6 +29,7 @@ module.exports = {
         },
         onStop() { 
             if (Platform.OS === 'ios') {
+                this.subscription.remove()
                 PedometerModule.onStop() 
 
             } else if (Platform.OS === 'android') {
