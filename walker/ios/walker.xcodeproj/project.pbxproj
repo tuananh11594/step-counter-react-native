@@ -37,11 +37,11 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* walkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* walkerTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
+		2FEB899C1998C25E73F4B430 /* Pods_walker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A245257C9D09D4544D202F76 /* Pods_walker.framework */; };
 		4901859A9742ABE8F200CEBC /* Pods_walker_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A260A3EFF35E49A2612F5B /* Pods_walker_tvOSTests.framework */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8698E88AC36A47D9908283A2 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FFCBB27703473A99B9A6E7 /* libBVLinearGradient.a */; };
 		8B432A5690A14E318E9B8F56 /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11723C2B34984C0993F28C2B /* libRNSVG-tvOS.a */; };
-		A85EAAFE7DFBE4F09F15801F /* Pods_walker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A245257C9D09D4544D202F76 /* Pods_walker.framework */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		CC671FD32111E9330035770B /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC671FC82111E9330035770B /* Octicons.ttf */; };
 		CC671FD42111E9330035770B /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC671FC92111E9330035770B /* Feather.ttf */; };
@@ -567,7 +567,7 @@
 				DD0800F143424876A32740D9 /* libRNSVG.a in Frameworks */,
 				8698E88AC36A47D9908283A2 /* libBVLinearGradient.a in Frameworks */,
 				2701BA59B179493984F987D2 /* libRNVectorIcons.a in Frameworks */,
-				A85EAAFE7DFBE4F09F15801F /* Pods_walker.framework in Frameworks */,
+				2FEB899C1998C25E73F4B430 /* Pods_walker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1139,7 +1139,7 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 8U2SQ4V327;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
@@ -1806,8 +1806,9 @@
 			baseConfigurationReference = 95CE2438F15FF7B8EF7099B6 /* Pods-walkerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 8U2SQ4V327;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1834,6 +1835,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/walker.app/walker";
 			};
 			name = Debug;
@@ -1843,9 +1845,10 @@
 			baseConfigurationReference = 51F6C0625BB468CAB848FD0E /* Pods-walkerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 8U2SQ4V327;
+				DEVELOPMENT_TEAM = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
@@ -1868,6 +1871,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/walker.app/walker";
 			};
 			name = Release;

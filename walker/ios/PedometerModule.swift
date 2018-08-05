@@ -9,14 +9,17 @@
 import Foundation
 
 @objc(PedometerModule)
-class PedometerModule: NSObject {
+class PedometerModule: RCTEventEmitter {
+  static let sharedInstance = RCTEventEmitter()
   private let activityManager = CMMotionActivityManager()
   private let pedometer = CMPedometer()
-//  private var shouldStartUpdating: Bool = false
   private var startDate: Date? = nil
   
-  @objc func testNative() {
-    print("Tuan Anh anksndkjahsdjkhaskjdhkjashd")
+  private override init() {}
+  
+  // Returns an array of your named events
+  override func supportedEvents() -> [String]! {
+    return ["Pedometer"]
   }
   
   @objc func onStart() {
@@ -32,6 +35,19 @@ class PedometerModule: NSObject {
     stopUpdating()
   }
   
+  @objc func startCountingSteps() {
+    pedometer.startUpdates(from: Date()) {
+      [weak self] (pedometerData, error) in
+      guard let pedometerData = pedometerData, error == nil else { return }
+      DispatchQueue.main.async {
+
+//        callback([error])
+        self?.sendEvent(withName: "Pedometer", body: pedometerData.numberOfSteps.stringValue)
+        print("Counting Steps: " + pedometerData.numberOfSteps.stringValue)
+      }
+    }
+  }
+  
   private func startUpdating() {
     if CMMotionActivityManager.isActivityAvailable() {
       startTrackingActivityType()
@@ -40,7 +56,7 @@ class PedometerModule: NSObject {
     }
     
     if CMPedometer.isStepCountingAvailable() {
-      startCountingSteps()
+//      startCountingSteps()
     } else {
       print("Pedometer is not available")
     }
@@ -89,16 +105,6 @@ class PedometerModule: NSObject {
         } else if activity.automotive {
           print("Automotive")
         }
-      }
-    }
-  }
-  
-  private func startCountingSteps() {
-    pedometer.startUpdates(from: Date()) {
-      [weak self] (pedometerData, error) in
-      guard let pedometerData = pedometerData, error == nil else { return }
-      DispatchQueue.main.async {
-        print("Counting Steps: " + pedometerData.numberOfSteps.stringValue)
       }
     }
   }

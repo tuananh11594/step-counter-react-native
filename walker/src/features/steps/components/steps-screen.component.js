@@ -3,26 +3,33 @@ import {
   View,
   Text,
   NativeModules,
-  TouchableOpacity
+  TouchableOpacity,
+  NativeEventEmitter
 } from 'react-native';
 import NavigationBar from '../../../common/component/navbar.component';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Colors from "../../../common/utils/colors"
-// const PedometerModule = NativeModules.PedometerModule;
+const PedometerModule = NativeModules.PedometerModule;
 import LineChartGradientScreen from '../../../common/chart/LineChartGradientScreen';
 import BarChartScreen from '../../../common/chart/BarChartScreen';
 import LineChartScreen from '../../../common/chart/LineChartScreen';
 import { renderSummary, renderDay } from './circular-progress/cicular-progress.component';
+import { Pedometer } from './nativemodule'
+
 export default class AboutComponent extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      steps: 0,
+    }
     this.testNative();
-    // PedometerModule.onStart();
+    Pedometer.onStart();
   }
   testNative = () => {
-    // PedometerModule.testNative();
   }
+
+
 
   render() {
     const navigation = this.props.navigation;
@@ -32,27 +39,27 @@ export default class AboutComponent extends Component {
       <View style={styles.container}>
         <NavigationBar titleScreen="Hôm nay" />
         <View style={styles.view_show_step}>
-          {renderDay()}
+          {renderDay(this.state.steps)}
         </View>
         <View style={styles.view_show_result}>
           <TouchableOpacity
             style={styles.button_sumary}
-            // onPress={() => { this.props.navigation.navigate('Target') }} 
-            >
+          onPress={() => { this.props.navigation.navigate('Target') }} 
+          >
             {renderSummary('ios-flame')}
             <Text style={styles.text_sumary}>57 KCAL</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button_sumary}
-            // onPress={() => { this.props.navigation.navigate('Target') }}
-            >
+          onPress={() => { this.props.navigation.navigate('Target') }}
+          >
             {renderSummary('ios-speedometer')}
             <Text style={styles.text_sumary}>854M</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button_sumary}
-            // onPress={() => { this.props.navigation.navigate('Target') }}
-            >
+          onPress={() => { this.props.navigation.navigate('Target') }}
+          >
             {renderSummary('ios-timer')}
             <Text style={styles.text_sumary}>18 PHÚT</Text>
           </TouchableOpacity>
@@ -74,6 +81,20 @@ export default class AboutComponent extends Component {
       </View>
     );
   }
+
+  componentDidMount() {
+    Pedometer.startCountingSteps((events) => {
+      // if (error) {
+        // console.error(error);
+        // console.warn("Loi cmnr");
+        
+      // } else {
+        console.warn("Tuan Anh");
+        this.setState({steps: events});
+      // }
+    })
+  }
+
 }
 
 const styles = {
