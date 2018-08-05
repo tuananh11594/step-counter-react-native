@@ -14,7 +14,7 @@ import LineChartGradientScreen from '../../../common/chart/LineChartGradientScre
 import BarChartScreen from '../../../common/chart/BarChartScreen';
 import LineChartScreen from '../../../common/chart/LineChartScreen';
 import { renderSummary, renderDay } from './circular-progress/cicular-progress.component';
-import { Pedometer } from './nativemodule'
+import { Pedometer } from '../../../native-module/pedometer/pedometer-module'
 
 const stepsMeta = {
   //One step equal 1s
