@@ -1,13 +1,12 @@
-import * as fb from 'firebase';
-
+var firebase = require("firebase");
 const config = {
-  apiKey: 'AIzaSyAbHqsvaHLSbuQZ-6hH3d0RzAXyjrVNONY',
-  authDomain: 'timesheet-386ff.firebaseapp.com',
-  databaseURL: 'https://timesheet-386ff.firebaseio.com',
-  projectId: 'timesheet-386ff',
-  storageBucket: 'timesheet-386ff.appspot.com',
-  messagingSenderId: '45610362409',
+  apiKey: 'AIzaSyBpOOUdT_UJMyEOORVJjw-OvFH5U4fj2NI',
+  authDomain: 'stepcounter-29c7a.firebaseapp.com',
+  databaseURL: 'https://stepcounter-29c7a.firebaseio.com',
+  projectId: 'stepcounter-29c7a',
+  storageBucket: 'stepcounter-29c7a.appspot.com',
+  messagingSenderId: '224997643904',
 };
 console.ignoredYellowBox = [ 'Setting a timer' ];
-export const firebase = fb.initializeApp(config);
+export const firebase = firebase.initializeApp(config);
 

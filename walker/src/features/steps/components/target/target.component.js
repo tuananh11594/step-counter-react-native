@@ -13,6 +13,8 @@ import { TouchableCustom } from '../../../../common/component/touchable-custom.c
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ViewLine } from '../../../../common/component/view-line.component';
 import Entypo from 'react-native-vector-icons/Entypo';
+import { writeDataAddTarget } from '../../../../firebase/set-data.firebase';
+import { getTarget } from '../../../../firebase/get-data';
 
 const ValueTagerElement = ({ iconMetaStep, value, type, backgroundColor, callbackMinus, callbackPlus }) => {
   return (
@@ -67,9 +69,24 @@ export default class TargetComponent extends Component {
   constructor(props){
     super(props);
     this.state = ({
+      steps: 10000,
       kalo: 300,
       km: 3,
       minutes: 30,
+    })
+  }
+
+  minusSteps = () => {
+    if(this.state.kalo >= 1){
+      this.setState({
+        steps: (this.state.steps - 1)
+      })
+    }
+  }
+
+  plusSteps = () => {
+    this.setState({
+      steps: (this.state.steps + 1)
     })
   }
 
@@ -110,6 +127,17 @@ export default class TargetComponent extends Component {
     })  
   }
 
+  doneSetTarget = () => {
+    let target = {
+      steps: this.state.steps,
+      kalo: this.state.kalo,
+      km: this.state.km,
+      minutes: this.state.minutes,
+    };
+    writeDataAddTarget(target);
+    this.props.navigation.goBack()
+  }
+
   render() {
     this.props
     return (
@@ -120,7 +148,7 @@ export default class TargetComponent extends Component {
         <NavigationComponent 
         titleScreen="My Target" 
         buttonDone={() => {
-          this.props.navigation.goBack()
+          this.doneSetTarget()
         }}
         />
         <ScrollView style={styles.view_content}>
@@ -151,6 +179,13 @@ export default class TargetComponent extends Component {
             </View>
           </TouchableOpacity>
           <ValueTagerElement
+            iconMetaStep={'ios-walk'}
+            value={this.state.steps}
+            type={'Steps'}
+            callbackMinus={() => this.minusSteps()}
+            callbackPlus={() => this.plusSteps()}
+          />
+          <ValueTagerElement
             iconMetaStep={'ios-flame'}
             value={this.state.kalo}
             type={'KCAL'}
@@ -175,6 +210,21 @@ export default class TargetComponent extends Component {
         </ScrollView>
       </View>
     );
+  }
+
+  getTargetAndFill = () => {
+    getTarget((target) => {
+      this.setState({
+        steps: target.steps,
+        kalo: target.kalo,
+        km: target.km,
+        minutes: target.minutes,
+      })
+    })
+  }
+
+  componentDidMount() {
+    this.getTargetAndFill()
   }
 }
 

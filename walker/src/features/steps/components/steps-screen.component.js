@@ -15,6 +15,7 @@ import BarChartScreen from '../../../common/chart/BarChartScreen';
 import LineChartScreen from '../../../common/chart/LineChartScreen';
 import { renderSummary, renderDay } from './circular-progress/cicular-progress.component';
 import { Pedometer } from '../../../native-module/pedometer/pedometer-module'
+import { getTarget } from '../../../firebase/get-data';
 
 const PedometerModule = NativeModules.PedometerModule;
 
@@ -38,7 +39,7 @@ export default class AboutComponent extends Component {
       meter: 0,
       minutes: 0,
       goalStepsDay: 10000,
-      goalCalos: 100,
+      goalKalos: 100,
       goalMinutes: 60,
       goalMeters: 1000,
       yourHeight: 1.74,
@@ -113,7 +114,6 @@ export default class AboutComponent extends Component {
       Pedometer.startCountingSteps((steps) => {
         // if (error) {
         // } else {
-        console.warn("Tuan Anh");
         this.setState({ 
           steps: steps,
           isListentEmit: false
@@ -130,7 +130,6 @@ export default class AboutComponent extends Component {
   }
 
   render() {
-    
     return (
       <View style={styles.container}>
         <NavigationBar titleScreen="Hôm nay" />
@@ -143,7 +142,7 @@ export default class AboutComponent extends Component {
           <TouchableOpacity
             style={styles.button_sumary}
             onPress={() => this.navigateTarget()}>
-            {renderSummary('ios-flame', this.state.calo, this.state.goalCalos)}
+            {renderSummary('ios-flame', this.state.calo, this.state.goalKalos)}
             <Text style={styles.text_sumary}>{this.state.calo} KCAL</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -181,9 +180,20 @@ export default class AboutComponent extends Component {
     this.startStepCounter()
   }
 
-  componentDidMount() {
+  getTargetAndFill = () => {
+    getTarget((target) => {
+      this.setState({
+        goalStepsDay: target.steps,
+        goalKalos: target.kalo,
+        goalMeters: target.km,
+        goalMinutes: target.minutes,
+      })
+    })
   }
 
+  componentDidMount() {
+    this.getTargetAndFill()
+  }
 }
 
 const styles = {

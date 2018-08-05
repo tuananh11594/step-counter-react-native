@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "224997643904",
+    "firebase_url": "https://stepcounter-29c7a.firebaseio.com",
+    "project_id": "stepcounter-29c7a",
+    "storage_bucket": "stepcounter-29c7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224997643904:android:24aedaf8472f0eb4",
+        "android_client_info": {
+          "package_name": "com.walke"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224997643904-u7ck9j56ljq1gapfcpcec3oof6dv5923.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzPzW2cE3UG63U_HQq1ym63TQ7VTmxOs4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
