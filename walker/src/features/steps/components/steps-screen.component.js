@@ -10,12 +10,13 @@ import {
 import NavigationBar from '../../../common/component/navbar.component';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Colors from "../../../common/utils/colors"
-const PedometerModule = NativeModules.PedometerModule;
 import LineChartGradientScreen from '../../../common/chart/LineChartGradientScreen';
 import BarChartScreen from '../../../common/chart/BarChartScreen';
 import LineChartScreen from '../../../common/chart/LineChartScreen';
 import { renderSummary, renderDay } from './circular-progress/cicular-progress.component';
 import { Pedometer } from '../../../native-module/pedometer/pedometer-module'
+
+const PedometerModule = NativeModules.PedometerModule;
 
 const stepsMeta = {
   //One step equal 1s
