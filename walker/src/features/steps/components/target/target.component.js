@@ -33,14 +33,12 @@ const styles = {
   },
   view_content: {
     flex: 1,
-    // backgroundColor: 'white'
   },
   image_icon: {
     width: 80,
     height: 80,
     alignSelf: 'center',
     margin: 20,
-    // backgroundColor: 'red'
   },
   text_description: {
     alignSelf: 'center',    
