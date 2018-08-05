@@ -24,7 +24,7 @@ const dayDim = {
 };
 
 const calculatorFill = (value, goals) => {
-  return (value/goals)*100;
+  return (value / goals) * 100;
 }
 
 export const renderSummary = (icon, value, goals) => {
@@ -54,7 +54,7 @@ export const renderSummary = (icon, value, goals) => {
 
 
 
-export const renderDay = (steps, goals) => {
+export const renderDay = (isStart, steps, goals) => {
   return (
     <AnimatedCircularProgress
       size={dayDim.size}
@@ -66,15 +66,27 @@ export const renderDay = (steps, goals) => {
     >
       {
         (fill) => (
-          <TouchableOpacity style={styles.dayFill}>
-            <Ionicons name='ios-walk' size={dayDim.iconSize} color='#29b8e5' />
-            <Text style={styles.steps}>
-              {steps} Steps
-              </Text>
-            <Text style={styles.goal}>
-              Goal: {goals}
-              </Text>
-          </TouchableOpacity>
+          <View style={styles.dayFill}>
+            {
+              isStart ?
+                <View style={styles.dayFill}>
+                  <Ionicons name='ios-walk' size={dayDim.iconSize} color='#29b8e5' />
+                  <Text style={styles.steps}>
+                    {steps} Steps
+                  </Text>
+                  <Text style={styles.goal}>
+                    Goal: {goals}
+                  </Text>
+                </View>
+                :
+                <View style={styles.dayFill}>
+                  <Ionicons name='ios-man' size={dayDim.iconSize} color='#29b8e5' />
+                  <Text style={styles.steps}>
+                    Start
+                  </Text>
+                </View>
+            }
+          </View>
         )
       }
     </AnimatedCircularProgress>

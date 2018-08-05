@@ -13,7 +13,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 export const TargetElement = ({ param }) => {
     return (
         <View style={styleCellPhone.view_cell_phone}>
-            <Text style={styleCellPhone.text_phone}>{param.number}</Text>
+            <Text style={styleCellPhone.text_phone}>{}</Text>
             <TouchableOpacity style={styleCellPhone.button}>
                 <Entypo name={"message"} size={30} color={Colors.color_blue} />
             </TouchableOpacity>

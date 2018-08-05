@@ -4,7 +4,8 @@ import {
   Text,
   NativeModules,
   TouchableOpacity,
-  NativeEventEmitter
+  NativeEventEmitter,
+  Alert
 } from 'react-native';
 import NavigationBar from '../../../common/component/navbar.component';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -29,6 +30,8 @@ export default class AboutComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isStart: false,
+      isListentEmit: false,
       steps: 0,
       calo: 0,
       meter: 0,
@@ -40,7 +43,6 @@ export default class AboutComponent extends Component {
       yourHeight: 1.74,
       yourWeight: 78
     }
-    Pedometer.onStart();
   }
 
   caculatorCalo = (time, yourWeight, yourHeight, ) => {
@@ -65,35 +67,93 @@ export default class AboutComponent extends Component {
     this.caculatorMeter(steps);
   }
 
-  render() {
-    const navigation = this.props.navigation;
+  turnOnOffPedometer = () => {
+    if (this.state.isStart) {
+      this.showAlerConfirmStopPedometer()
+    } else {
+      this.startPedometer()
+    }
+  }
+  showAlerConfirmStopPedometer = () => {
+    Alert.alert(
+      'Confirm!',
+      'Do you want stop?',
+      [
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'OK', onPress: () => {
+          this.stopPedometer()
+        }},
+      ],
+      { cancelable: false }
+    )
+  }
 
-    console.log(navigation.navigate)
+  stopPedometer = () => {
+    Pedometer.onStop()
+    this.setState({ 
+      isStart: false,
+      steps: 0,
+      calo: 0,
+      meter: 0,
+      minutes: 0,
+    })
+  }
+
+  startPedometer = () => {
+    Pedometer.onStart(); 
+    this.setState({
+      isStart: true,      
+      isListentEmit: true
+    })   
+  }
+
+  startStepCounter = () => {
+    if (this.state.isStart && this.state.isListentEmit) {      
+      Pedometer.startCountingSteps((steps) => {
+        // if (error) {
+        // } else {
+        console.warn("Tuan Anh");
+        this.setState({ 
+          steps: steps,
+          isListentEmit: false
+         });
+        this.caculatorMetaSteps(steps)
+        // }
+      })
+    }
+  }
+
+  navigateTarget = () => {
+    const navigation = this.props.navigation;
+    navigation.navigate('Target');
+  }
+
+  render() {
+    
     return (
       <View style={styles.container}>
         <NavigationBar titleScreen="Hôm nay" />
-        <View style={styles.view_show_step}>
-          {renderDay(this.state.steps, this.state.goalStepsDay)}
-        </View>
+        <TouchableOpacity 
+        style={styles.view_show_step}
+        onPress={() => this.turnOnOffPedometer()}>
+          {renderDay(this.state.isStart, this.state.steps, this.state.goalStepsDay)}
+        </TouchableOpacity>
         <View style={styles.view_show_result}>
           <TouchableOpacity
             style={styles.button_sumary}
-            onPress={() => { this.props.navigation.navigate('Target') }}
-          >
+            onPress={() => this.navigateTarget()}>
             {renderSummary('ios-flame', this.state.calo, this.state.goalCalos)}
             <Text style={styles.text_sumary}>{this.state.calo} KCAL</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button_sumary}
-            onPress={() => { this.props.navigation.navigate('Target') }}
-          >
+            onPress={() => this.navigateTarget() }>
             {renderSummary('ios-speedometer', this.state.meter, this.state.goalMeters )}
             <Text style={styles.text_sumary}>{this.state.meter} M</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button_sumary}
-            onPress={() => { this.props.navigation.navigate('Target') }}
-          >
+            onPress={() => this.navigateTarget()}>
             {renderSummary('ios-timer', this.state.minutes, this.state.goalMinutes )}
             <Text style={styles.text_sumary}>{this.state.minutes} PHÚT</Text>
           </TouchableOpacity>
@@ -116,14 +176,11 @@ export default class AboutComponent extends Component {
     );
   }
 
+  componentDidUpdate(){
+    this.startStepCounter()
+  }
+
   componentDidMount() {
-    Pedometer.startCountingSteps((steps) => {
-      // if (error) {
-      // } else {
-      this.setState({ steps: steps });
-      this.caculatorMetaSteps(steps)
-      // }
-    })
   }
 
 }
