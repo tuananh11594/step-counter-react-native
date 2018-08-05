@@ -50,37 +50,37 @@ class LineChartScreen extends React.Component {
                     {
                       y: 65,
                       x: 0,
-                      marker: "65 kg"
+                      marker: "65 steps"
                     },
                     {
                       y: 77,
                       x: 1,
-                      marker: "77 kg"
+                      marker: "77 steps"
                     },
                     {
                       y: 76,
                       x: 2,
-                      marker: "76 kg"
+                      marker: "76 steps"
                     },
                     {
                       y: 74,
                       x: 3,
-                      marker: "74 kg"
+                      marker: "74 steps"
                     },
                     {
                       y: 76,
                       x: 4,
-                      marker: "76 kg"
+                      marker: "76 steps"
                     },
                     {
                       y: 65,
                       x: 5,
-                      marker: "Today: 65 kg"
+                      marker: "65 steps"
                     },
                     {
                       y: 65,
                       x: 6,
-                      marker: "Today: 65 kg"
+                      marker: "Today: 65 steps"
                     }
                   ],
                   label: "",
@@ -127,7 +127,7 @@ class LineChartScreen extends React.Component {
               fontWeight: "bold",
               textSize: 12,
               textColor: processColor("gray"),
-              valueFormatter: ["M", "T", "W", "T", "F", "S"]
+              valueFormatter: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
             }}
             yAxis={{
               left: {
