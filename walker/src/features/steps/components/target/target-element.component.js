@@ -50,6 +50,5 @@ const styleCellPhone = {
     text_bold: {
         fontWeight: 'bold',
         fontSize: 17,
-        // backgroundColor: 'black'
     },
 }
