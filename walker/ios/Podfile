@@ -6,6 +6,8 @@ target 'walker' do
   use_frameworks!
   pod 'SwiftyJSON', '3.1.4'      # 4.0.0
   pod 'Charts', '3.0.3'          # 3.1.1
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
   # Pods for walker
   target 'walker-tvOSTests' do
     inherit! :search_paths

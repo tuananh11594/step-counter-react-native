@@ -15,8 +15,9 @@ const styles = {
         width: '100%',
         fontSize: 30,
         fontWeight: '800',
-        backgroundColor: Colors.white,
+        backgroundColor: '#262B30',
         paddingBottom: 20,
         paddingLeft: 20,
+        color: 'white'
       },
 }

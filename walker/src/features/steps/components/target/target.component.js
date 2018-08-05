@@ -4,18 +4,21 @@ import {
   Text,
   Image,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  Switch,
+  Alert
 } from 'react-native';
-import NavigationBar from '../../../../common/component/navbar.component';
+import NavigationComponent from '../../../../common/component/navi.component';
 import { TouchableCustom } from '../../../../common/component/touchable-custom.component'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ViewLine } from '../../../../common/component/view-line.component';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-const ValueTagerElement = ({ iconMetaStep, value, type, backgroundColor }) => {
+const ValueTagerElement = ({ iconMetaStep, value, type, backgroundColor, callbackMinus, callbackPlus }) => {
   return (
     <View style={[stylesValueTagerElement.button_set_value, { backgroundColor: backgroundColor }]}>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={callbackMinus}>
         <Ionicons name={'ios-remove-circle'} size={40} color='#454545' />
       </TouchableOpacity>
       <View style={stylesValueTagerElement.content_button_set_value}>
@@ -25,7 +28,8 @@ const ValueTagerElement = ({ iconMetaStep, value, type, backgroundColor }) => {
           <Text style={stylesValueTagerElement.text_type}>{type}</Text>
         </View>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={callbackPlus}>
         <Ionicons name={'ios-add-circle'} size={40} color='#454545' />
       </TouchableOpacity>
     </View>
@@ -60,20 +64,82 @@ const stylesValueTagerElement = {
 
 
 export default class TargetComponent extends Component {
+  constructor(props){
+    super(props);
+    this.state = ({
+      kalo: 300,
+      km: 3,
+      minutes: 30,
+    })
+  }
+
+  minusKalo = () => {
+    if(this.state.kalo >= 1){
+      this.setState({
+        kalo: (this.state.kalo - 1)
+      })
+    }
+  }
+  plusKalo = () => {
+    this.setState({
+      kalo: (this.state.kalo + 1)
+    })
+  }
+  minusKm = () => {
+    if(this.state.km >= 1){
+      this.setState({
+        km: (this.state.km - 1)
+      }) 
+    }
+  }
+  plusKm = () => {
+    this.setState({
+      km: (this.state.km + 1)
+    })   
+  }
+  minusMinute = () => {
+    if(this.state.minutes >= 1){
+      this.setState({
+        minutes: (this.state.minutes - 1)
+      })  
+    }
+  }
+  plusMinute = () => {
+    this.setState({
+      minutes: (this.state.minutes + 1)
+    })  
+  }
+
   render() {
+    this.props
     return (
       <View
         style={styles.container}
       // opacity={0.6}
       >
-        <NavigationBar titleScreen="My Target" />
+        <NavigationComponent 
+        titleScreen="My Target" 
+        buttonDone={() => {
+          this.props.navigation.goBack()
+        }}
+        />
         <ScrollView style={styles.view_content}>
           <Image
             resizeMode="contain"
             style={styles.image_icon}
             source={require("../../../../assets/icon/target.png")}
           />
-          <Text style={styles.text_description}>Bắt đầu với StepsApp và đặt thêm mục tiêu hàng ngày để theo dõi và tăng mức độ hoạt động của bạn.</Text>
+          <Text style={styles.text_description}>Bắt đầu với Step Counter và đặt thêm mục tiêu hàng ngày để theo dõi và tăng mức độ hoạt động của bạn.</Text>
+          <View style={styles.view_notification}>
+            <Ionicons name={'ios-ribbon'} size={35} color='#41F6FE' />
+            <View style={styles.view_content_noti}>
+              <View style={styles.view_noti_text}>
+                <Text style={styles.text_noti}>Mục tiêu hàng ngày</Text>
+                <Switch />
+              </View>
+              <ViewLine />
+            </View>
+          </View>
           <TouchableOpacity style={styles.view_notification}>
             <Ionicons name={'ios-notifications'} size={35} color='#41F6FE' />
             <View style={styles.view_content_noti}>
@@ -86,19 +152,25 @@ export default class TargetComponent extends Component {
           </TouchableOpacity>
           <ValueTagerElement
             iconMetaStep={'ios-flame'}
-            value={300}
+            value={this.state.kalo}
             type={'KCAL'}
+            callbackMinus={() => this.minusKalo()}
+            callbackPlus={() => this.plusKalo()}
           />
           <ValueTagerElement
             iconMetaStep={'ios-speedometer'}
-            value={'3,0'}
+            value={this.state.km}
             type={'KM'}
-            backgroundColor={'#1D1F1E'}
+            // backgroundColor={'#1D1F1E'}
+            callbackMinus={() => this.minusKm()}
+            callbackPlus={() => this.plusKm()}
           />
           <ValueTagerElement
             iconMetaStep={'ios-timer'}
-            value={30}
+            value={this.state.minutes}
             type={'PHÚT'}
+            callbackMinus={() => this.minusMinute()}
+            callbackPlus={() => this.plusMinute()}
           />
         </ScrollView>
       </View>
@@ -113,7 +185,6 @@ const styles = {
   },
   view_content: {
     flex: 1,
-    // backgroundColor: 'black',
     // position: 'absolute',
   },
   image_icon: {
@@ -126,6 +197,7 @@ const styles = {
     alignSelf: 'center',
     marginLeft: 20,
     marginRight: 20,
+    marginBottom: 10,
     color: 'white',
     textAlign: 'center'
   },

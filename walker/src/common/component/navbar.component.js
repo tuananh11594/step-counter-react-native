@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import Colors from '../../common/utils/colors';
 
-export default class componentName extends Component {
+export default class NavComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,19 +17,17 @@ export default class componentName extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.status_bar}/>
+        <View style={styles.status_bar} />
         <View style={styles.app_bar}>
-        
+
           <View style={styles.view_left}>
-          {/* Button left */}
           </View>
-        
+
           <View style={styles.view_center}>
             <Text style={styles.text_title}>{this.props.titleScreen}</Text>
           </View>
 
           <View style={styles.view_right}>
-          {/* Button right */}
           </View>
 
         </View>
@@ -62,12 +60,12 @@ const styles = {
   view_center: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',    
+    alignItems: 'center',
   },
   view_right: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',        
+    alignItems: 'center',
   },
   text_title: {
     fontSize: 16,

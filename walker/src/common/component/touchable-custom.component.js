@@ -36,6 +36,7 @@ const styles = {
     container: {
         paddingLeft: 15,
         paddingTop: 10,
+        backgroundColor: '#262B30',
     },
     view_button: {
         paddingRight: 15,
@@ -47,6 +48,7 @@ const styles = {
         flex: 1,
         paddingLeft: 15,
         fontSize: 17,
+        color: 'white'
     },
     icon_button: {
         width: 30,
