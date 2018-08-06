@@ -3,6 +3,12 @@ package com.walker;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.horcrux.svg.SvgPackage;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
+import io.invertase.firebase.RNFirebasePackage;
+import com.github.wuxudong.rncharts.MPAndroidChartPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import com.github.wuxudong.rncharts.MPAndroidChartPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -30,6 +36,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new VectorIconsPackage(),
+            new SvgPackage(),
+            new ReactNativePushNotificationPackage(),
+            new LinearGradientPackage(),
+            new RNFirebasePackage(),
+            new MPAndroidChartPackage(),
             new RNFirebasePackage(),
             new MPAndroidChartPackage(),
             new VectorIconsPackage(),

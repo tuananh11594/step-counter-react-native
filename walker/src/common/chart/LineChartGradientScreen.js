@@ -33,6 +33,7 @@ class LineChartScreen extends React.Component {
   }
 
   render() {
+    // console.warn(this.props.steps);
     return (
       <View style={{ flex: 1, backgroundColor: "red" }}>
         {/* <View style={{ height: 80 }}>
@@ -48,39 +49,39 @@ class LineChartScreen extends React.Component {
                 {
                   values: [
                     {
-                      y: 65,
+                      y: this.props.dataChart.mo,
                       x: 0,
-                      marker: "65 steps"
+                      marker: "To day:" + this.props.dataChart.mo + " steps"
                     },
                     {
-                      y: 77,
+                      y: this.props.dataChart.tu,
                       x: 1,
-                      marker: "77 steps"
+                      marker: this.props.dataChart.tu + " steps"
                     },
                     {
-                      y: 76,
+                      y: this.props.dataChart.we,
                       x: 2,
-                      marker: "76 steps"
+                      marker: this.props.dataChart.we + " steps"
                     },
                     {
-                      y: 74,
+                      y: this.props.dataChart.th,
                       x: 3,
-                      marker: "74 steps"
+                      marker: this.props.dataChart.we + " steps"
                     },
                     {
-                      y: 76,
+                      y: this.props.dataChart.fr,
                       x: 4,
-                      marker: "76 steps"
+                      marker: this.props.dataChart.we + " steps"
                     },
                     {
-                      y: 65,
+                      y: this.props.dataChart.sa,
                       x: 5,
-                      marker: "65 steps"
+                      marker: this.props.dataChart.we + " steps"
                     },
                     {
-                      y: 65,
+                      y: this.props.dataChart.su,
                       x: 6,
-                      marker: "Today: 65 steps"
+                      marker: this.props.dataChart.we + " steps"
                     }
                   ],
                   label: "",

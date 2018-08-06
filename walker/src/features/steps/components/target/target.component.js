@@ -77,7 +77,7 @@ export default class TargetComponent extends Component {
   }
 
   minusSteps = () => {
-    if(this.state.kalo >= 1){
+    if(this.state.kalo > 1){
       this.setState({
         steps: (this.state.steps - 1)
       })
@@ -91,7 +91,7 @@ export default class TargetComponent extends Component {
   }
 
   minusKalo = () => {
-    if(this.state.kalo >= 1){
+    if(this.state.kalo > 1){
       this.setState({
         kalo: (this.state.kalo - 1)
       })
@@ -103,7 +103,7 @@ export default class TargetComponent extends Component {
     })
   }
   minusKm = () => {
-    if(this.state.km >= 1){
+    if(this.state.km > 1){
       this.setState({
         km: (this.state.km - 1)
       }) 
@@ -115,7 +115,7 @@ export default class TargetComponent extends Component {
     })   
   }
   minusMinute = () => {
-    if(this.state.minutes >= 1){
+    if(this.state.minutes > 1){
       this.setState({
         minutes: (this.state.minutes - 1)
       })  
@@ -213,7 +213,7 @@ export default class TargetComponent extends Component {
   }
 
   getTargetAndFill = () => {
-    getTarget((target) => {
+    getTarget('target', (target) => {
       this.setState({
         steps: target.steps,
         kalo: target.kalo,
