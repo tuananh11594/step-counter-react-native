@@ -158,7 +158,7 @@ export default class TargetComponent extends Component {
             source={require("../../../../assets/icon/target.png")}
           />
           <Text style={styles.text_description}>Bắt đầu với Step Counter và đặt thêm mục tiêu hàng ngày để theo dõi và tăng mức độ hoạt động của bạn.</Text>
-          <View style={styles.view_notification}>
+          {/* <View style={styles.view_notification}>
             <Ionicons name={'ios-ribbon'} size={35} color='#41F6FE' />
             <View style={styles.view_content_noti}>
               <View style={styles.view_noti_text}>
@@ -177,7 +177,7 @@ export default class TargetComponent extends Component {
               </View>
               <ViewLine />
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <ValueTagerElement
             iconMetaStep={'ios-walk'}
             value={this.state.steps}
