@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:224997643904:android:24aedaf8472f0eb4",
+        "mobilesdk_app_id": "1:224997643904:android:8b3b189801055833",
         "android_client_info": {
-          "package_name": "com.walke"
+          "package_name": "com.walker"
         }
       },
       "oauth_client": [
